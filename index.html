@@ -480,9 +480,10 @@ box-shadow:
   inset 0 1px 0 rgba(255,255,255,.08)}
 
 .price-grid>.price-box:first-child{--pb-rot:11deg;animation-delay:-3s;--pb-scale:.9}
+.price-grid>.price-box:nth-child(2){--pb-rot:0deg;animation-delay:-1.5s;--pb-scale:.9}
 .price-grid>.price-box:last-child{--pb-rot:-11deg;animation-delay:0s;--pb-scale:.9}
-/* Featured (MOST VALUE) is always center-stage — overrides positional rotation */
-.price-grid>.price-box.featured{--pb-rot:0deg;--pb-scale:1;z-index:2}
+/* Featured (MOST VALUE) sits at right with inward tilt towards center, fullsize */
+.price-grid>.price-box.featured{--pb-rot:-11deg;--pb-scale:1;z-index:2}
 
 @keyframes pb-float-anim{
   0%{--pb-float:0px}
@@ -1073,7 +1074,7 @@ position:relative;overflow:hidden;transition:color .35s}
         <h3 class="price-title">Full Campaign</h3>
         <p class="price-sub">4 videos &middot; 8 stories with CTA &middot; 40 lifestyle images &middot; paid media campaign</p>
         <p class="price-total-lbl">Price <span class="price-vat">no VAT</span></p>
-        <p class="price-orig" data-base="reg. 14 900 €" data-boost="reg. 15 900 €">reg. 14 900 €</p>
+        <p class="price-orig" data-base="reg. 14 900 €" data-boost="reg. 14 900 €">reg. 14 900 €</p>
         <p class="price-total" data-base="11900" data-boost="11900">11 900</p>
         <span class="price-unit">EUR</span>
         <div class="price-includes">
@@ -1081,7 +1082,7 @@ position:relative;overflow:hidden;transition:color .35s}
           <p class="pi hi">8 stories on Villa Sjövik&apos;s channels &mdash; direct link and CTA</p>
           <p class="pi hi">40 lifestyle images for your own channels and website</p>
           <p class="pi hi">&euro;4 000 paid media budget &mdash; &euro;1 000 per video Meta&nbsp;Ads boost</p>
-          <p class="pi hi">500 000+ guaranteed impressions across the full campaign</p>
+          <p class="pi hi">Half a million guaranteed impressions across the full campaign</p>
           <p class="pi hi">Campaign management &mdash; ad setup, audience targeting, performance tracking</p>
           <p class="pi">Full media usage rights</p>
           <p class="pi">Styling, filming and editing included</p>
