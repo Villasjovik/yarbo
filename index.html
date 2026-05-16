@@ -6,7 +6,7 @@
 <title>Yarbo × Villa Sjövik — Collaboration Proposal 2026</title>
 <link rel="icon" type="image/png" href="./yarbo-favicon.png"/>
 <meta property="og:title" content="Yarbo × Villa Sjövik — Collaboration Proposal 2026"/>
-<meta property="og:description" content="Three concepts where Yarbo's modular yard robot meets Villa Sjövik's home — one platform, three modules, captured across the full Scandinavian year."/>
+<meta property="og:description" content="One Yarbo platform across the Scandinavian year — a season-specific video for each module, with the through-line shown in every video. UGC or cinematic, your call."/>
 <meta property="og:image" content="https://villasjovik.github.io/yarbo/yarbo-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Yarbo × Villa Sjövik — Collaboration Proposal 2026"/>
-<meta name="twitter:description" content="Three concepts where Yarbo's modular yard robot meets Villa Sjövik's home."/>
+<meta name="twitter:description" content="One Yarbo platform across the Scandinavian year — season-specific videos, with the platform through-line in every one."/>
 <meta name="twitter:image" content="https://villasjovik.github.io/yarbo/yarbo-og.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -361,10 +361,36 @@ max-width:900px;margin-bottom:56px}
 border-radius:100px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .sp-footnote{margin-top:40px;text-align:center;font-size:11.5px;letter-spacing:.04em;
   color:rgba(242,237,228,.42);font-style:italic;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7}
+
+/* Intro under section headline (used in the new 2-block tracks layout) */
+.sp-intro{font-family:'Playfair Display',serif;font-size:17px;line-height:1.55;color:rgba(242,237,228,.78);
+  max-width:720px;margin:-24px auto 48px;text-align:center;font-style:italic;letter-spacing:.005em}
+
+/* 2-column variant of sp-grid (re-uses sp-grid-4 base but tightens animation pairing) */
+.sp-grid.sp-grid-2col{grid-template-columns:repeat(2,1fr);gap:24px;max-width:980px;margin-left:auto;margin-right:auto;perspective-origin:50% 50%}
+.sp-grid.sp-grid-2col>.sp-c:nth-child(1){--sp-rot:8deg;--sp-base-y:-6px;animation-delay:-2.2s}
+.sp-grid.sp-grid-2col>.sp-c:nth-child(2){--sp-rot:-8deg;--sp-base-y:-6px;animation-delay:0s}
+
+/* Bulleted lists inside sp-c cards (used for through-line + season-specific) */
+.sp-c .sp-list{list-style:none;padding:0;margin:0 0 4px 0;display:flex;flex-direction:column;gap:10px}
+.sp-c .sp-list li{position:relative;padding-left:18px;font-size:13px;line-height:1.65;color:var(--muted)}
+.sp-c .sp-list li::before{content:'';position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;
+  background:var(--gold);opacity:.7;transform:translateY(-50%)}
+.sp-c .sp-list li strong{color:rgba(242,237,228,.92);font-weight:500}
+.sp-c .sp-list .sp-list-meta{color:rgba(242,237,228,.45);font-size:11.5px;font-style:italic;letter-spacing:.01em}
+
+/* Gentle divider between the two thematic blocks (covers + directions) */
+.sp-block-divider{width:1px;height:120px;margin:72px auto;background:linear-gradient(180deg,transparent 0%,rgba(212,168,75,.32) 50%,transparent 100%);opacity:0;transition:opacity .9s var(--ease) .3s}
+.sp-block-divider.in,.in .sp-block-divider{opacity:1}
+
 @media(max-width:860px){
   .sp-grid{grid-template-columns:1fr;perspective:none}
   .sp-grid.sp-grid-4{grid-template-columns:1fr}
+  .sp-grid.sp-grid-2col{grid-template-columns:1fr;perspective:none}
+  .sp-grid.sp-grid-2col>.sp-c:nth-child(1),.sp-grid.sp-grid-2col>.sp-c:nth-child(2){--sp-rot:0deg;--sp-base-y:0px}
   .sp-c,.sp-grid>.sp-c:first-child,.sp-grid>.sp-c:nth-child(2):not(:last-child),.sp-grid>.sp-c:last-child:not(:first-child):not(:nth-child(2)),.sp-grid.sp-grid-4>.sp-c:nth-child(1),.sp-grid.sp-grid-4>.sp-c:nth-child(2),.sp-grid.sp-grid-4>.sp-c:nth-child(3),.sp-grid.sp-grid-4>.sp-c:nth-child(4){--sp-rot:0deg;--sp-base-y:0px}
+  .sp-intro{margin:-12px auto 32px;font-size:15px}
+  .sp-block-divider{height:60px;margin:40px auto}
 }
 
 /* KANALEN */
@@ -455,6 +481,8 @@ box-shadow:
 
 .price-grid>.price-box:first-child{--pb-rot:11deg;animation-delay:-3s;--pb-scale:.9}
 .price-grid>.price-box:last-child{--pb-rot:-11deg;animation-delay:0s;--pb-scale:.9}
+/* Featured (MOST VALUE) is always center-stage — overrides positional rotation */
+.price-grid>.price-box.featured{--pb-rot:0deg;--pb-scale:1;z-index:2}
 
 @keyframes pb-float-anim{
   0%{--pb-float:0px}
@@ -467,6 +495,7 @@ box-shadow:
 .price-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.05;letter-spacing:-.005em}
 .price-sub{font-family:'Inter',sans-serif;font-size:12px;color:rgba(242,237,228,.55);margin-bottom:36px;letter-spacing:.03em;line-height:1.6;font-weight:400}
 .price-total-lbl{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.price-vat{margin-left:8px;font-size:9px;letter-spacing:.18em;color:rgba(242,237,228,.42);font-weight:400}
 .price-orig{font-family:'Inter',sans-serif;font-size:15px;font-weight:300;color:rgba(242,237,228,.28);text-decoration:line-through;margin-bottom:6px;letter-spacing:.02em}
 .price-total{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,58px);font-weight:500;color:var(--ink);line-height:1}
 .price-unit{font-family:'Inter',sans-serif;font-size:14px;font-weight:300;color:var(--muted);display:block;margin-top:8px}
@@ -881,36 +910,72 @@ position:relative;overflow:hidden;transition:color .35s}
 <section id="sec-spar">
   <div class="sp-orb sp-orb-1" aria-hidden="true"></div>
   <div class="sp-inner">
-    <p class="sec-lbl rv">Three Tracks</p>
-    <h2 class="sec-h2 rv">Three ways to bring <em>Yarbo</em> into Villa&nbsp;Sjövik's home.</h2>
-    <div class="sp-grid">
+
+    <!-- BLOCK 1: What every video covers -->
+    <p class="sec-lbl rv">The Videos</p>
+    <h2 class="sec-h2 rv">Every video. <em>Every season.</em></h2>
+    <p class="sp-intro rv">Each module gets its own season-specific video. The platform features run as a through-line across all of them.</p>
+
+    <div class="sp-grid sp-grid-4 sp-grid-2col rv">
 
       <div class="sp-c rv d1">
-        <p class="sp-eyebrow">Track 01</p>
-        <h3>The all-season robot</h3>
-        <p class="sp-sub">"Yarbo through Villa Sjövik's year"</p>
-        <p class="sp-body">The platform across seasons &mdash; mower module through spring and summer, leaf module in autumn, snow module in winter. One chassis, three jobs, captured across the full Swedish year. Carin walks the platform through each season as the modules swap and the camera follows the rhythm of the garden: green growth, falling leaves, fresh snow. This is the headline story for the modular system &mdash; the single concept that makes the whole platform feel inevitable, not just a clever mower. For an audience that thinks in years rather than seasons, it lands immediately: this is the one robot that replaces three.</p>
-        <span class="sp-tag">Modular Platform &middot; Year-round &middot; Headline</span>
+        <p class="sp-eyebrow">In every video</p>
+        <h3>The through&#8209;line</h3>
+        <p class="sp-sub">"What every Yarbo video shows"</p>
+        <ul class="sp-list">
+          <li><strong>Hot-swap process</strong> &mdash; chassis stays, module locks in</li>
+          <li><strong>RTK satellite precision</strong> &mdash; centimeter-accurate navigation</li>
+          <li><strong>The Yarbo app</strong> &mdash; scheduling, geo-fence, remote start, real-time status on Carin's phone</li>
+          <li><strong>Safety system</strong> &mdash; obstacle detection, lift sensor, rain pause</li>
+          <li><strong>Quiet electric drive</strong> &mdash; ambient sound capture (the silence is the feature)</li>
+          <li><strong>Battery + runtime</strong> &mdash; single charge, multi-zone coverage</li>
+        </ul>
+        <span class="sp-tag">Platform &middot; Through-line &middot; Always Shown</span>
       </div>
 
       <div class="sp-c rv d2">
-        <p class="sp-eyebrow">Track 02</p>
-        <h3>Quiet enough to forget</h3>
-        <p class="sp-sub">"Yarbo's electric drive on a working morning"</p>
-        <p class="sp-body">The silent operation as the headline. Yarbo works in the background while Carin tends the garden, sets the table on the terrace, has a conversation outdoors &mdash; the camera captures what isn't there: no engine, no fumes, no interruption. Birds audible, conversation undisturbed, the machine almost invisible. For a premium audience that already pays for the quieter dishwasher and the quieter fridge, this is the same logic taken outside. It separates Yarbo from petrol mowers without ever speaking badly of them &mdash; the difference is felt, not argued.</p>
-        <span class="sp-tag">Premium Feel &middot; Silent Drive &middot; Everyday</span>
-      </div>
-
-      <div class="sp-c rv d3">
-        <p class="sp-eyebrow">Track 03</p>
-        <h3>From inside the house</h3>
-        <p class="sp-sub">"Yarbo through the app, from the kitchen window"</p>
-        <p class="sp-body">App control and smart-home integration. Carin opens the Yarbo app from the kitchen counter, schedules a mow for tomorrow morning, then watches the platform work through the window with coffee in hand. The tech-forward angle: premium outdoor robotics treated as a connected appliance, on the same shelf as the smart thermostat and the smart oven. For the audience that has already invested in a connected home, Yarbo becomes the logical next step outdoors &mdash; not a gadget, a piece of the system.</p>
-        <span class="sp-tag">Smart Home &middot; App Control &middot; Connected</span>
+        <p class="sp-eyebrow">Per video</p>
+        <h3>The season&#8209;specific focus</h3>
+        <p class="sp-sub">"What changes from one video to the next"</p>
+        <ul class="sp-list">
+          <li><strong>Summer &mdash; Mower video:</strong> blade configuration, cut quality, slope handling</li>
+          <li><strong>Summer &mdash; Trimmer video</strong> <span class="sp-list-meta">(package 2 &amp; 3)</span>: edge precision on borders, beds, hard-to-reach</li>
+          <li><strong>Autumn &mdash; Leaf Blower video:</strong> airflow strength, autonomous coverage of fallen leaves</li>
+          <li><strong>Winter &mdash; Snow Blower video:</strong> throw distance, autonomous route through driveway</li>
+        </ul>
+        <span class="sp-tag">Module &middot; Season &middot; Focus</span>
       </div>
 
     </div>
-    <p class="sp-footnote rv">Three concepts to anchor the conversation &mdash; and we're naturally open to shaping any of them around what your senior team has in mind for a launch, a region or a season.</p>
+
+    <div class="sp-block-divider rv" aria-hidden="true"></div>
+
+    <!-- BLOCK 2: Two directions -->
+    <p class="sec-lbl rv">Two Directions</p>
+    <h2 class="sec-h2 rv">Same coverage, <em>different feel.</em></h2>
+    <p class="sp-intro rv">Whichever direction you pick, every video still covers the through-line plus its season-specific focus. The choice is about tone, not content.</p>
+
+    <div class="sp-grid sp-grid-4 sp-grid-2col rv">
+
+      <div class="sp-c rv d1">
+        <p class="sp-eyebrow">Direction A</p>
+        <h3>Authentic UGC</h3>
+        <p class="sp-sub">"Carin's voice, real garden time."</p>
+        <p class="sp-body">Filmed in Carin's natural voice. Handheld, conversational commentary ("here's what surprised me"). High-trust format &mdash; the @villasjovik audience responds to Carin like a neighbor, not an actor. Modern social-native feel for brands building organic credibility.</p>
+        <span class="sp-tag">UGC &middot; Handheld &middot; Conversational</span>
+      </div>
+
+      <div class="sp-c rv d2">
+        <p class="sp-eyebrow">Direction B</p>
+        <h3>Cinematic product story</h3>
+        <p class="sp-sub">"Polished motion, flagship-feel."</p>
+        <p class="sp-body">Stabilized motion, macro detail shots of the platform in action, color graded post, voiceover narration over polished cuts. Production-grade asset that runs as Meta ad creative as naturally as it sits in organic feed. Strong for brands wanting a flagship product anthem.</p>
+        <span class="sp-tag">Cinematic &middot; Macro &middot; Voiceover</span>
+      </div>
+
+    </div>
+
+    <p class="sp-footnote rv">Have another direction in mind? We're happy to shape around what your senior team has in mind &mdash; just say the word.</p>
   </div>
 </section>
 
@@ -953,16 +1018,16 @@ position:relative;overflow:hidden;transition:color .35s}
   <div class="pr-orb pr-orb-1" aria-hidden="true"></div>
   <div class="pr-inner">
     <p class="sec-lbl rv">Investment</p>
-    <h2 class="sec-h2 rv">Three ways to build <em>narrative and reach.</em></h2>
+    <h2 class="sec-h2 rv">Three ways to <em>build the campaign.</em></h2>
 
     <div class="ads-toggle rv" id="ads-toggle-wrap">
       <button class="ads-pill" id="ads-toggle" type="button" aria-pressed="false">
         <span class="ads-switch" aria-hidden="true"></span>
         <span class="ads-text">
-          <span class="ads-label">Reach boost</span>
+          <span class="ads-label">Reach amplification</span>
           <span class="ads-detail-wrap">
-            <span class="ads-detail ads-detail-default">+1 000 € for 100,000 guaranteed views via Meta&nbsp;Ads</span>
-            <span class="ads-detail ads-detail-active">Active &middot; 100,000 guaranteed views via Meta&nbsp;Ads</span>
+            <span class="ads-detail ads-detail-default">+900 € for 150,000+ guaranteed extra impressions via Meta&nbsp;Ads</span>
+            <span class="ads-detail ads-detail-active">Active &middot; 150,000+ guaranteed extra impressions via Meta&nbsp;Ads</span>
           </span>
         </span>
       </button>
@@ -970,56 +1035,55 @@ position:relative;overflow:hidden;transition:color .35s}
 
     <div class="price-grid">
 
-      <!-- Starter -->
+      <!-- The Three Seasons -->
       <div class="price-box rv d1">
-        <h3 class="price-title">Starter</h3>
-        <p class="price-sub">1 video &middot; 2 stories with CTA &middot; 10 lifestyle images</p>
-        <p class="price-total-lbl">Price</p>
-        <p class="price-total" data-base="1650" data-boost="2650">1 650</p>
-        <span class="price-unit">EUR</span>
-        <div class="price-includes">
-          <p class="pi hi">1 video published on Villa Sjövik&apos;s channels</p>
-          <p class="pi hi">2 stories on Villa Sjövik&apos;s channels &mdash; direct link and CTA</p>
-          <p class="pi hi">10 lifestyle images for your own channels and website</p>
-          <p class="pi">Full usage rights to all material</p>
-          <p class="pi">Styling, filming and editing included</p>
-        </div>
-      </div>
-
-      <!-- Project (featured) -->
-      <div class="price-box featured rv d2">
-        <span class="price-ribbon">Recommended &middot; TO START WITH</span>
-        <h3 class="price-title">Project</h3>
+        <h3 class="price-title">The Three Seasons</h3>
         <p class="price-sub">3 videos &middot; 6 stories with CTA &middot; 30 lifestyle images</p>
-        <p class="price-total-lbl">Price</p>
-        <p class="price-orig" data-base="reg. 4 950 €" data-boost="reg. 5 950 €">reg. 4 950 €</p>
-        <p class="price-total" data-base="3500" data-boost="4500">3 500</p>
+        <p class="price-total-lbl">Price <span class="price-vat">no VAT</span></p>
+        <p class="price-total" data-base="4500" data-boost="5400">4 500</p>
         <span class="price-unit">EUR</span>
         <div class="price-includes">
-          <p class="pi hi">3 videos published on Villa Sjövik&apos;s channels</p>
+          <p class="pi hi">3 videos published on Villa Sjövik&apos;s channels (one per season &mdash; summer/autumn/winter)</p>
           <p class="pi hi">6 stories on Villa Sjövik&apos;s channels &mdash; direct link and CTA</p>
           <p class="pi hi">30 lifestyle images for your own channels and website</p>
-          <p class="pi">Full usage rights to all material</p>
+          <p class="pi">Full media usage rights</p>
           <p class="pi">Styling, filming and editing included</p>
         </div>
       </div>
 
-      <!-- Premium -->
-      <div class="price-box rv d3">
-        <span class="price-ribbon" style="background:#1a1410;color:var(--gold);border:1px solid rgba(212,168,75,.5)">Performance &middot; PREMIUM</span>
-        <h3 class="price-title">Premium</h3>
-        <p class="price-sub">Project package &middot; paid media rights &middot; &euro;1 000 ads pilot</p>
-        <p class="price-total-lbl">Price</p>
-        <p class="price-orig">reg. 9 500 &euro;</p>
-        <p class="price-total">7 000</p>
+      <!-- The Full Platform -->
+      <div class="price-box rv d2">
+        <h3 class="price-title">The Full Platform</h3>
+        <p class="price-sub">4 videos &middot; 8 stories with CTA &middot; 40 lifestyle images</p>
+        <p class="price-total-lbl">Price <span class="price-vat">no VAT</span></p>
+        <p class="price-total" data-base="6900" data-boost="7800">6 900</p>
         <span class="price-unit">EUR</span>
         <div class="price-includes">
-          <p class="pi hi">3 videos published on Villa Sjövik&apos;s channels</p>
-          <p class="pi hi">6 stories on Villa Sjövik&apos;s channels &mdash; direct link and CTA</p>
-          <p class="pi hi">30 lifestyle images for your own channels and website</p>
-          <p class="pi hi">Paid media rights &mdash; full ad usage across all 3 videos, 6 stories and 30 images</p>
-          <p class="pi hi">Meta ads pilot &mdash; &euro;1 000 budget + 2 short retargeting cuts shaped from your main ad creative</p>
-          <p class="pi">Full usage rights to all material</p>
+          <p class="pi hi">4 videos published on Villa Sjövik&apos;s channels (mower, trimmer, leaf blower, snow blower)</p>
+          <p class="pi hi">8 stories on Villa Sjövik&apos;s channels &mdash; direct link and CTA</p>
+          <p class="pi hi">40 lifestyle images for your own channels and website</p>
+          <p class="pi">Full media usage rights</p>
+          <p class="pi">Styling, filming and editing included</p>
+        </div>
+      </div>
+
+      <!-- Full Campaign (featured) -->
+      <div class="price-box featured rv d3">
+        <span class="price-ribbon">Recommended &middot; MOST VALUE</span>
+        <h3 class="price-title">Full Campaign</h3>
+        <p class="price-sub">4 videos &middot; 8 stories with CTA &middot; 40 lifestyle images &middot; paid media campaign</p>
+        <p class="price-total-lbl">Price <span class="price-vat">no VAT</span></p>
+        <p class="price-orig" data-base="reg. 14 900 €" data-boost="reg. 15 900 €">reg. 14 900 €</p>
+        <p class="price-total" data-base="11900" data-boost="11900">11 900</p>
+        <span class="price-unit">EUR</span>
+        <div class="price-includes">
+          <p class="pi hi">4 videos published on Villa Sjövik&apos;s channels</p>
+          <p class="pi hi">8 stories on Villa Sjövik&apos;s channels &mdash; direct link and CTA</p>
+          <p class="pi hi">40 lifestyle images for your own channels and website</p>
+          <p class="pi hi">&euro;4 000 paid media budget &mdash; &euro;1 000 per video Meta&nbsp;Ads boost</p>
+          <p class="pi hi">500 000+ guaranteed impressions across the full campaign</p>
+          <p class="pi hi">Campaign management &mdash; ad setup, audience targeting, performance tracking</p>
+          <p class="pi">Full media usage rights</p>
           <p class="pi">Styling, filming and editing included</p>
         </div>
       </div>
@@ -1290,7 +1354,7 @@ if(spotSec){
   const mqEl=document.getElementById('sec-mq');
   const sections=[
     {id:'sec-hero',label:'Intro',scrollTo:()=>0},
-    {id:'sec-spar',label:'Three Tracks',
+    {id:'sec-spar',label:'The Videos',
       scrollTo:()=>mqEl?(mqEl.getBoundingClientRect().top+window.scrollY-90):document.getElementById('sec-spar').getBoundingClientRect().top+window.scrollY-30,
       trackStart:()=>mqEl?(mqEl.getBoundingClientRect().top+window.scrollY):document.getElementById('sec-spar').getBoundingClientRect().top+window.scrollY
     },
